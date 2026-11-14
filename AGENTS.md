@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Catalogue photos and brand logos live in `public/catalog/` and are referenced via `src/lib/catalog-images.ts` (`catalogImage`, `resolveImageUrl`); old `/__l5e/assets-v1/...` links stored in product rows are mapped there, because those hosted links only load on the original project's domain.
+- The store connects to the original ASTRA STYLIN backend through the `VITE_SUPABASE_*` values in `.env`; this project has no backend of its own.
