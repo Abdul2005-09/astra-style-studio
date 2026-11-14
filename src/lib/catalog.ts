@@ -1,5 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { resolveImageUrl } from "@/lib/catalog-images";
 
 export const SIZES = ["S", "M", "L", "XL", "XXL"] as const;
 export type Size = (typeof SIZES)[number];
@@ -68,7 +69,7 @@ function normalize(row: any): Product {
   return {
     ...rest,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    images: [...(product_images ?? [])].map((i: any) => ({ ...i, path: i.url })).sort((a, b) => a.sort_order - b.sort_order),
+    images: [...(product_images ?? [])].map((i: any) => ({ ...i, url: resolveImageUrl(i.url), path: i.url })).sort((a, b) => a.sort_order - b.sort_order),
     variants: [...(product_variants ?? [])].sort((a, b) => a.sort_order - b.sort_order),
     inventory: inventory ?? [],
   };

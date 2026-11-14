@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth";
 import { signImageUrls } from "@/lib/catalog";
+import { resolveImageUrl } from "@/lib/catalog-images";
 
 export type BagItem = {
   key: string;
@@ -80,7 +81,7 @@ async function loadRemote(userId: string) {
   const items: BagItem[] = rows.map((r) => {
     const colour = r.colour || null;
     const img = pick(r.products!.product_images);
-    return { key: bagKey(r.product_id, colour, r.size), productId: r.product_id, slug: r.products!.slug, name: r.products!.name, price: r.products!.price, image: img ? signed.get(img) ?? img : undefined, colour, size: r.size, quantity: r.quantity };
+    return { key: bagKey(r.product_id, colour, r.size), productId: r.product_id, slug: r.products!.slug, name: r.products!.name, price: r.products!.price, image: img ? signed.get(img) ?? resolveImageUrl(img) : undefined, colour, size: r.size, quantity: r.quantity };
   });
   return { items, wishlist: (wish ?? []).map((w) => w.product_id) };
 }

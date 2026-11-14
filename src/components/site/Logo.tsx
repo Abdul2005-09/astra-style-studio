@@ -1,7 +1,4 @@
-import logoMark from "@/assets/catalog/astra-logo-mark.png.asset.json";
-import logoMarkLight from "@/assets/catalog/astra-logo-mark-light.png.asset.json";
-import logoFull from "@/assets/catalog/astra-logo-full.png.asset.json";
-import logoFullLight from "@/assets/catalog/astra-logo-full-light.png.asset.json";
+import { catalogImage } from "@/lib/catalog-images";
 import { cn } from "@/lib/utils";
 
 export function Logo({
@@ -16,11 +13,11 @@ export function Logo({
   const src =
     variant === "full"
       ? tone === "light"
-        ? logoFullLight.url
-        : logoFull.url
+        ? catalogImage("astra-logo-full-light.png")
+        : catalogImage("astra-logo-full.png")
       : tone === "light"
-        ? logoMarkLight.url
-        : logoMark.url;
+        ? catalogImage("astra-logo-mark-light.png")
+        : catalogImage("astra-logo-mark.png");
   return <img src={src} alt="ASTRA STYLIN" className={cn("select-none", className)} draggable={false} />;
 }
 
