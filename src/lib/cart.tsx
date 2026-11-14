@@ -101,7 +101,7 @@ export function BagProvider({ children }: { children: ReactNode }) {
     if (loading) return;
     let cancelled = false;
     if (!userId) {
-      setItems(readLocal<BagItem>(BAG_KEY));
+      setItems(readLocal<BagItem>(BAG_KEY).map((i) => (i.image ? { ...i, image: resolveImageUrl(i.image) } : i)));
       setWishlist(readLocal<string>(WISH_KEY));
       setMode("guest");
       return;
