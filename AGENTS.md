@@ -31,4 +31,4 @@ use the editor.
 
 ## Project rules
 - Catalogue photos and brand logos live in `public/catalog/` and are referenced via `src/lib/catalog-images.ts` (`catalogImage`, `resolveImageUrl`); old `/__l5e/assets-v1/...` links stored in product rows are mapped there, because those hosted links only load on the original project's domain.
-- The store runs on this project's own Lovable Cloud backend; its store tables and catalogue data must be recreated here, because they were never copied over from the original ASTRA STYLIN backend.
+- The store runs on this project's own Lovable Cloud backend (schema + catalogue seed in `drizzle/migrations/`); it no longer shares data with the original ASTRA STYLIN project, so accounts, orders and admin are separate here.
