@@ -8,6 +8,13 @@
       "when": 1794756725948,
       "tag": "0000_astra_core_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794757630173,
+      "tag": "0001_update_whatsapp_number",
+      "breakpoints": true
     }
   ]
 }

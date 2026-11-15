@@ -14,7 +14,7 @@ function Contact() {
   const { data } = useQuery(settingsQuery());
   const [name, setName] = useState("");
   const [msg, setMsg] = useState("");
-  const num = data?.whatsapp_number ?? "919361617869";
+  const num = data?.whatsapp_number ?? "919344868741";
   function send(e: React.FormEvent) {
     e.preventDefault();
     window.open(`https://wa.me/${num}?text=${encodeURIComponent(`Hi ASTRA STYLIN, I'm ${name}.\n${msg}`)}`, "_blank");
