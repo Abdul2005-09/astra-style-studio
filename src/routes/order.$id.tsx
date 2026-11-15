@@ -23,7 +23,7 @@ function OrderPage() {
   });
   if (isLoading) return <p className="py-24 text-center text-muted-foreground">Loading your order…</p>;
   if (!order) return <p className="py-24 text-center">Order not found.</p>;
-  const link = whatsappLink(settings?.whatsapp_number ?? "919361617869", buildOrderMessage({ ...order, items: order.order_items }));
+  const link = whatsappLink(settings?.whatsapp_number ?? "919344868741", buildOrderMessage({ ...order, items: order.order_items }));
   return (
     <section className="mx-auto max-w-2xl px-5 py-20 text-center">
       <p className="eyebrow text-burgundy">Order {order.order_number}</p>

@@ -17,7 +17,7 @@ export function SiteFooter() {
   const { data: settings } = useQuery(settingsQuery());
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
-  const wa = settings?.whatsapp_number ?? "919361617869";
+  const wa = settings?.whatsapp_number ?? "919344868741";
 
   async function subscribe(e: React.FormEvent) {
     e.preventDefault();

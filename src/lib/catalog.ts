@@ -138,7 +138,7 @@ export const settingsQuery = () =>
       if (error) throw error;
       return (
         data ?? {
-          whatsapp_number: "919361617869",
+          whatsapp_number: "919344868741",
           announcement: "Order directly on WhatsApp · Sizes S to XXL",
           instagram_url: null,
           contact_email: null,
