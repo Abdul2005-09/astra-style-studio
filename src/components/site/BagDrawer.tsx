@@ -41,7 +41,7 @@ export function BagDrawer() {
                       </button>
                     </div>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      {i.colour ? `${i.colour} · ` : ""}Size {i.size}
+                      Colour: {i.colour || "Not selected"} · Size {i.size}
                     </p>
                     <div className="mt-auto flex items-center justify-between">
                       <div className="flex items-center border">

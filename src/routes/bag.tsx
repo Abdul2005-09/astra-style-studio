@@ -25,7 +25,7 @@ function BagPage() {
                 <img src={i.image} alt="" className="h-28 w-22 bg-tile object-cover" />
                 <div className="flex-1">
                   <Link to="/product/$slug" params={{ slug: i.slug }} className="text-xs uppercase tracking-[0.15em]">{i.name}</Link>
-                  <p className="mt-1 text-xs text-muted-foreground">{i.colour ? `${i.colour} · ` : ""}Size {i.size}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">Colour: {i.colour || "Not selected"} · Size {i.size}</p>
                   <select value={i.quantity} onChange={(e) => setQuantity(i.key, Number(e.target.value))} className="mt-3 border bg-transparent px-2 py-1 text-xs">
                     {Array.from({ length: 10 }, (_, n) => n + 1).map((n) => <option key={n} value={n}>{n}</option>)}
                   </select>
