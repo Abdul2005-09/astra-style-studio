@@ -125,6 +125,11 @@ function RootComponent() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isAdmin = pathname.startsWith("/admin");
 
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("astra-theme");
+    document.documentElement.classList.toggle("dark", savedTheme === "dark");
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>

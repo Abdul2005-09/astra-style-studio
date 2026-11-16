@@ -20,7 +20,7 @@ export function buildOrderMessage(o: WhatsAppOrder) {
     "",
     ...o.items.map(
       (i, idx) =>
-        `${idx + 1}. ${i.product_name}${i.colour ? ` – ${i.colour}` : ""} – Size ${i.size} × ${i.quantity} = ${formatINR(i.unit_price * i.quantity)}`,
+        `${idx + 1}. ${i.product_name} – Colour: ${i.colour || "Not selected"} – Size ${i.size} × ${i.quantity} = ${formatINR(i.unit_price * i.quantity)}`,
     ),
     "",
     `Total: ${formatINR(o.total)}`,
