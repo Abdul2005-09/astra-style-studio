@@ -32,7 +32,7 @@ function OrderPage() {
       <Button asChild size="lg" variant="burgundy" className="mt-8"><a href={link} target="_blank" rel="noreferrer"><MessageCircle /> Send order on WhatsApp</a></Button>
       <ul className="mt-12 divide-y border-y text-left text-sm">
         {order.order_items.map((i) => (
-          <li key={i.id} className="flex justify-between py-4"><span>{i.product_name} · {i.colour ? `${i.colour} · ` : ""}{i.size} × {i.quantity}</span><span>{formatINR(i.unit_price * i.quantity)}</span></li>
+          <li key={i.id} className="flex justify-between py-4"><span>{i.product_name} · Colour: {i.colour || "Not selected"} · Size: {i.size} × {i.quantity}</span><span>{formatINR(i.unit_price * i.quantity)}</span></li>
         ))}
       </ul>
       <p className="mt-4 text-right">Total {formatINR(order.total)}</p>
