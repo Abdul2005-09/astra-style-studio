@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ProductEditor } from "@/components/admin/ProductEditor";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { requireSession } from "@/lib/auth";
@@ -57,7 +58,7 @@ function Admin() {
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-10">
-      <div className="flex items-center justify-between"><h1 className="font-display text-4xl">Store admin</h1><Link to="/" className="eyebrow hover:text-burgundy">View store →</Link></div>
+      <div className="flex items-center justify-between"><h1 className="font-display text-4xl">Store admin</h1><div className="flex items-center gap-4"><ThemeToggle /><Link to="/" className="eyebrow hover:text-burgundy">View store →</Link></div></div>
 
       <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
         {kpis.map(([label, value]) => (
