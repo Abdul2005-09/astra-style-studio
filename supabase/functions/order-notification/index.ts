@@ -67,7 +67,7 @@ Deno.serve(async (request: Request) => {
       const raw = String(value ?? "").trim();
       if (!raw) return null;
       if (/^https:\/\//i.test(raw)) return raw;
-      if (raw.startsWith("/")) return `https://astra-stylin.vercel.app${raw}`;
+      if (raw.startsWith("/")) return `https://astra-stylin-fashion.vercel.app${raw}`;
 
       const storagePath = raw.replace(/^storage:/i, "").replace(/^\/+/, "");
       const bucketPath = storagePath.startsWith("product-images/")
