@@ -10,12 +10,12 @@ import { cn } from "@/lib/utils";
 export function ProductPurchase({ product, onDone }: { product: Product; onDone?: () => void }) {
   const { add, setOpen } = useBag();
   const navigate = useNavigate();
-  const [colour, setColour] = useState<string | null>(product.variants[0]?.colour_name ?? null);
+  const [colour, setColour] = useState<string | null>(null);
   const [size, setSize] = useState<string | null>(null);
   const [qty, setQty] = useState(1);
 
   useEffect(() => {
-    setColour(product.variants[0]?.colour_name ?? null);
+    setColour(null);
     setSize(null);
     setQty(1);
   }, [product.id, product.variants]);
@@ -24,6 +24,10 @@ export function ProductPurchase({ product, onDone }: { product: Product; onDone?
   const allSoldOut = product.status === "sold_out" || SIZES.every((s) => stockFor(product, s) <= 0);
 
   function commit(goCheckout: boolean) {
+    if (product.variants.length > 0 && !colour) {
+      toast.error("Please choose a colour");
+      return;
+    }
     if (!size) {
       toast.error("Please choose a size");
       return;
@@ -56,7 +60,7 @@ export function ProductPurchase({ product, onDone }: { product: Product; onDone?
       {product.variants.length > 0 && (
         <div>
           <p className="eyebrow mb-3">
-            Colour <span className="ml-2 font-normal normal-case tracking-normal text-muted-foreground">{colour}</span>
+            Colour <span className="ml-2 font-normal normal-case tracking-normal text-muted-foreground">{colour ?? "Select a colour"}</span>
           </p>
           <div className="flex flex-wrap gap-2.5">
             {product.variants.map((v) => (
