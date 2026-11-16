@@ -84,7 +84,7 @@ function Checkout() {
           {items.map((i) => (
             <li key={i.key} className="flex gap-4 text-sm">
               <img src={i.image} alt="" className="h-20 w-16 object-cover" />
-              <div className="flex-1"><p className="text-xs uppercase tracking-wider">{i.name}</p><p className="text-xs text-muted-foreground">{i.colour ? `${i.colour} · ` : ""}Size {i.size} × {i.quantity}</p></div>
+              <div className="flex-1"><p className="text-xs uppercase tracking-wider">{i.name}</p><p className="text-xs text-muted-foreground">Colour: {i.colour || "Not selected"} · Size {i.size} × {i.quantity}</p></div>
               <p>{formatINR(i.price * i.quantity)}</p>
             </li>
           ))}
