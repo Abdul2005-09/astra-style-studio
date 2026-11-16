@@ -94,7 +94,7 @@ Deno.serve(async (request: Request) => {
         <td width="100" valign="top" style="padding:12px 10px;border-bottom:1px solid #eee">${imageCell}</td>
         <td valign="middle" style="padding:12px 10px;border-bottom:1px solid #eee;color:#211b18">
           <strong>${escapeHtml(item.product_name)}</strong><br>
-          <small style="color:#777">${escapeHtml(item.colour || "—")} · Size ${escapeHtml(item.size)} × ${escapeHtml(item.quantity)}</small>
+          <small style="color:#777">Colour: <strong>${escapeHtml(item.colour || "Not selected")}</strong> · Size: ${escapeHtml(item.size)} × ${escapeHtml(item.quantity)}</small>
         </td>
         <td valign="middle" style="padding:12px 10px;border-bottom:1px solid #eee;text-align:right;white-space:nowrap">${money(Number(item.unit_price) * Number(item.quantity))}</td>
       </tr>`;

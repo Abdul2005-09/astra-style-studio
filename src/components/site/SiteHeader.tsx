@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Heart, Menu, Moon, Search, ShoppingBag, Sun, User, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { useBag } from "@/lib/cart";
@@ -23,6 +23,20 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    const initial = localStorage.getItem("astra-theme") === "dark" ? "dark" : "light";
+    setTheme(initial);
+    document.documentElement.classList.toggle("dark", initial === "dark");
+  }, []);
+
+  function toggleTheme() {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.classList.toggle("dark", next === "dark");
+    localStorage.setItem("astra-theme", next);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -71,6 +85,9 @@ export function SiteHeader() {
         </Link>
 
         <div className="flex items-center justify-end gap-4 md:gap-5">
+          <button aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`} title={`${theme === "dark" ? "Light" : "Dark"} theme`} onClick={toggleTheme} className="hover:text-burgundy">
+            {theme === "dark" ? <Sun className="size-[18px]" strokeWidth={1.4} /> : <Moon className="size-[18px]" strokeWidth={1.4} />}
+          </button>
           <button aria-label="Search" onClick={() => setSearchOpen(true)} className="hover:text-burgundy">
             <Search className="size-[18px]" strokeWidth={1.4} />
           </button>
