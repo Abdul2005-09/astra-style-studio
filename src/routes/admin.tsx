@@ -88,7 +88,7 @@ function Admin() {
           {orders.map((o) => (
             <div key={o.id} className="grid gap-3 p-4 text-sm md:grid-cols-[1fr_2fr_auto_auto] md:items-center">
               <div><p className="font-medium">{o.order_number}</p><p className="text-xs text-muted-foreground">{new Date(o.created_at).toLocaleString("en-IN")}</p></div>
-              <div><p>{o.shipping_name} · {o.shipping_phone}</p><p className="text-xs text-muted-foreground">{o.order_items.map((i) => `${i.product_name} (${i.size}) ×${i.quantity}`).join(", ")}</p><p className="text-xs text-muted-foreground">{[o.line1, o.line2, o.city, o.state, o.postal_code].filter(Boolean).join(", ")}</p></div>
+              <div><p>{o.shipping_name} · {o.shipping_phone}</p><p className="text-xs text-muted-foreground">{o.order_items.map((i) => `${i.product_name} · Colour: ${i.colour || "Not selected"} · Size: ${i.size} ×${i.quantity}`).join(", ")}</p><p className="text-xs text-muted-foreground">{[o.line1, o.line2, o.city, o.state, o.postal_code].filter(Boolean).join(", ")}</p></div>
               <span>{formatINR(o.total)}</span>
               <select value={o.status} onChange={(e) => setStatus(o.id, e.target.value as (typeof STATUSES)[number])} className="h-9 border bg-background px-2 text-xs uppercase tracking-widest">
                 {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
